@@ -26,7 +26,7 @@ function Classes() {
         <div>
             <Dropdown>
                 <Dropdown.Toggle variant="success" id="dropdown-basic">
-                    Classes
+                    Choose Your Class
                 </Dropdown.Toggle>
 
                 <Dropdown.Menu>

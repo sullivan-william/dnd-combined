@@ -6,7 +6,9 @@ function HomeView() {
     return (
         <div>
             <Races />
+            <br></br>
             <Classes />
+            <br></br>
             <Spells />
         </div>
     )

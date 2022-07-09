@@ -26,7 +26,7 @@ function Races() {
         <div>
             <Dropdown>
                 <Dropdown.Toggle variant="success" id="dropdown-basic">
-                    Race
+                    Choose Your Race
                 </Dropdown.Toggle>
 
                 <Dropdown.Menu>
