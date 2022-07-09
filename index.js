@@ -1,13 +1,20 @@
 // dependencies
 require('dotenv').config()
 const express = require('express')
+const bodyParser = require('body-parser')
+const cors = require('cors')
 const app = express()
 const axios = require('axios')
-const cors = require('cors')
 const { Sequelize } = require('sequelize')
 
 // middleware
 app.use(cors())
+app.use(express.static('public'))
+app.use(express.urlencoded({ extended: true }))
+app.use(bodyParser.json())
+
+// controllers
+app.use('/users', require('./controllers/users'))
 
 // routes
 app.get('/spells', async(req, res) => {
