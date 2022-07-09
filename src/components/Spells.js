@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Dropdown } from "react-bootstrap";
 
 function Spells() {
     const [spellsData, setSpellsData] = useState([])
@@ -18,13 +19,21 @@ function Spells() {
     // iterate through list of spells retrieved from api
     const spells = spellsData.map((spell, i) => {
         return (
-            <p key={i}>{spell.name}</p>
+            <Dropdown.Item key={i}>{spell.name}</Dropdown.Item>
         )
     })
 
     return (
         <div>
-            {spells}
+            <Dropdown>
+                <Dropdown.Toggle variant="success" id="dropdown-basic">
+                    Spells
+                </Dropdown.Toggle>
+
+                <Dropdown.Menu>
+                    {spells}
+                </Dropdown.Menu>
+            </Dropdown>
         </div>
     )
 }
