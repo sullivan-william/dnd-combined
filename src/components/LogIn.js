@@ -1,6 +1,7 @@
 import { useContext, useState, createContext } from "react";
 import { CurrentUser } from "../contexts/CurrentUser";
 import { useNavigate } from "react-router";
+import { Link } from "react-router-dom";
 
 function Login() {
 
@@ -77,6 +78,7 @@ function Login() {
                 </div>
                 <input className="btn btn-primary" type="submit" value="Login" />
             </form>
+            <Link to="/signup">New User</Link>
         </div>
     )
 }
