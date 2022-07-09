@@ -15,6 +15,7 @@ app.use(bodyParser.json())
 
 // controllers
 app.use('/users', require('./controllers/users'))
+app.use('/authentication', require('./controllers/authentication'))
 
 // routes
 app.get('/spells', async(req, res) => {
