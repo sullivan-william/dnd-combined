@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import HomeView from './components/HomeView';
+import NewCharacter from './components/NewCharacter';
 import SignUp from './components/SignUp';
 
 
@@ -11,6 +11,7 @@ function App() {
     <Router>
       <Routes>
         <Route path='/' element={<SignUp />} />
+        <Route path='/new_character' element={<NewCharacter />} />
       </Routes>
     </Router>
   );

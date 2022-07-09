@@ -1,6 +1,9 @@
 import { useState } from "react"
+import { useNavigate } from "react-router"
 
 function SignUp() {
+
+    const navigate = useNavigate()
 
     const [user, setUser] = useState({
         username: '',
@@ -18,6 +21,7 @@ function SignUp() {
             body: JSON.stringify(user)
         })
 
+        navigate("/new_character")
     }
 
     return (
