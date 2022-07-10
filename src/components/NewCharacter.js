@@ -40,10 +40,11 @@ function NewCharacter() {
                         name="name"
                     />
                 </div>
+                <br></br>
                 <Races />
-                <div>
-                    <label htmlFor="class">{<Classes />}</label>
-                </div>
+                <br></br>
+                <Classes />
+                <br></br>
                 <input className="btn btn-primary" type="submit" value="Create Character" />
             </form>
         </div>
