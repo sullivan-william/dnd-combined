@@ -6,7 +6,7 @@ function Navigation() {
 
     const navigate = useNavigate()
 
-    const { currentUser } = useContext(CurrentUser)
+    const { currentUser, setCurrentUser } = useContext(CurrentUser)
     
     let navbar = (
         <li style={{ float: 'right' }}>
@@ -19,7 +19,7 @@ function Navigation() {
     if (currentUser) {
         navbar = (
             <li style={{ float: 'right' }}>
-                Logged in as {currentUser.username}
+                {currentUser.username} - <button onClick={() => setCurrentUser(null)}>Signout</button>
             </li>
         )
     }
