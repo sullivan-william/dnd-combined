@@ -6,18 +6,21 @@ import NewCharacter from './components/NewCharacter';
 import SignUp from './components/SignUp';
 import Login from './components/Login';
 import CurrentUserProvider from './contexts/CurrentUser';
+import CharacterProvider from './contexts/Character';
 
 
 function App() {
   return (
     <CurrentUserProvider>
-      <Router>
-        <Routes>
-          <Route path='/' element={<Login />} />
-          <Route path='/new_character' element={<NewCharacter />} />
-          <Route path='signup' element={<SignUp />} />
-        </Routes>
-      </Router>
+      <CharacterProvider>
+        <Router>
+          <Routes>
+            <Route path='/' element={<Login />} />
+            <Route path='signup' element={<SignUp />} />
+            <Route path='/new_character' element={<NewCharacter />} />
+          </Routes>
+        </Router>
+      </CharacterProvider>
     </CurrentUserProvider>
   );
 }

@@ -1,7 +1,10 @@
-import { useEffect, useState } from "react";
-import { Dropdown } from "react-bootstrap";
+import { useContext, useEffect, useState } from "react";
+import { Character } from "../contexts/Character";
 
 function Races() {
+
+    const { character, setCharacter } = useContext(Character)
+
     const [raceData, setRaceData] = useState([])
 
     // retrieve possible character races from API
@@ -18,21 +21,25 @@ function Races() {
     // iterate through races to return each item individually
     const races = raceData.map((race, i) => {
         return (
-            <Dropdown.Item key={i}>{race.name}</Dropdown.Item>
+            <option value={race.name} key={i}>{race.name}</option>
         )
     })
 
     return (
         <div>
-            <Dropdown>
-                <Dropdown.Toggle variant="success" id="dropdown-basic">
-                    Choose Your Race
-                </Dropdown.Toggle>
-
-                <Dropdown.Menu>
+            <label htmlFor="race">
+                Choose Your Race:
+                <br></br>
+                <select 
+                    required
+                    value={character.race}
+                    onChange={e => setCharacter({ ...character, race: e.target.value})}
+                    id="race"
+                    name="race"
+                >
                     {races}
-                </Dropdown.Menu>
-            </Dropdown>
+                </select>
+            </label>
         </div>
     )
 }
