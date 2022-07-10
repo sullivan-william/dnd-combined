@@ -1,11 +1,14 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
 import { useNavigate } from "react-router"
+import { CurrentUser } from "../contexts/CurrentUser"
 import Classes from "./Classes"
 import Races from "./Races"
 
 function NewCharacter() {
 
     const navigate = useNavigate()
+
+    const { currentUser } = useContext(CurrentUser)
 
     const [character, setCharacter] = useState({
         name: '',
@@ -16,6 +19,7 @@ function NewCharacter() {
     async function handleSubmit(e) {
         e.preventDefault()
 
+        
         await fetch(`http://localhost:3001/characters/new`, {
             method: 'POST',
             headers: {
@@ -25,7 +29,7 @@ function NewCharacter() {
         })
         navigate("/characters_page")
     }
-
+    
     return (
         <div>
             <form onSubmit={handleSubmit}>
@@ -34,7 +38,7 @@ function NewCharacter() {
                     <input
                         required
                         value={character.name}
-                        onChange={e => setCharacter({ ...character, name: e.target.value})}
+                        onChange={e => setCharacter({ ...character, name: e.target.value, user_id: currentUser.user_id})}
                         className="form-control"
                         id="name"
                         name="name"
