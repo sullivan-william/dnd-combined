@@ -7,6 +7,7 @@ import SignUp from './components/SignUp';
 import Login from './components/Login';
 import CurrentUserProvider from './contexts/CurrentUser';
 import CharacterProvider from './contexts/Character';
+import Navigation from './components/Navigation';
 
 
 function App() {
@@ -14,11 +15,12 @@ function App() {
     <CurrentUserProvider>
       <CharacterProvider>
         <Router>
-          <Routes>
-            <Route path='/' element={<Login />} />
-            <Route path='signup' element={<SignUp />} />
-            <Route path='/new_character' element={<NewCharacter />} />
-          </Routes>
+          <Navigation />
+            <Routes>
+              <Route path='/' element={<Login />} />
+              <Route path='signup' element={<SignUp />} />
+              <Route path='/new_character' element={<NewCharacter />} />
+            </Routes>
         </Router>
       </CharacterProvider>
     </CurrentUserProvider>
