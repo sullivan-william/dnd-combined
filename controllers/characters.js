@@ -17,6 +17,7 @@ router.post('/new', async (req, res) => {
     }
 })
 
+// get all characters from specific user
 router.get('/:userId', async (req, res) => {
     try {
         let userId = Number(req.params.userId)
@@ -33,14 +34,29 @@ router.get('/:userId', async (req, res) => {
     }
 })
 
-router.put('/edit/:characterId', async (req, res) => {
+// get specific character from user
+router.get('/characters/:characterId', async (req, res) => {
     try {
         let characterId = Number(req.params.characterId)
         const character = await Character.findOne({
             where: { character_id: characterId}
         })
         res.json(character)
-        console.log(character)
+    } catch (error) {
+        console.log(error)
+    }
+})
+
+// edit specific character
+router.put('/edit/:characterId', async (req, res) => {
+    try {
+        let characterId = Number(req.params.characterId)
+        const character = await Character.findOne({
+            where: { character_id: characterId}
+        })
+        Object.assign(character, req.body)
+        await character.save()
+        res.json(character)
     } catch (error) {
         console.log(error)
     }
