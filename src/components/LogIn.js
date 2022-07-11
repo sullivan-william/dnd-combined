@@ -7,7 +7,11 @@ function Login() {
 
     const navigate = useNavigate()
 
-    const { setCurrentUser } = useContext(CurrentUser)
+    const { currentUser, setCurrentUser } = useContext(CurrentUser)
+
+    if (currentUser) {
+        navigate('/new_character')
+    }
 
     const [credentials, setCredentials] = useState({
         username: '',

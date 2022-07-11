@@ -8,6 +8,7 @@ import Login from './components/Login';
 import CurrentUserProvider from './contexts/CurrentUser';
 import CharacterProvider from './contexts/Character';
 import Navigation from './components/Navigation';
+import CharactersShowPage from './components/CharactersShowPage';
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
               <Route path='/' element={<Login />} />
               <Route path='signup' element={<SignUp />} />
               <Route path='/new_character' element={<NewCharacter />} />
+              <Route path='/characters_page' element={<CharactersShowPage />} />
             </Routes>
         </Router>
       </CharacterProvider>

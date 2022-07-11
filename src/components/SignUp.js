@@ -1,9 +1,17 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
 import { useNavigate } from "react-router"
+import { CurrentUser } from "../contexts/CurrentUser"
 
 function SignUp() {
 
+    
     const navigate = useNavigate()
+    
+    const { currentUser } = useContext(CurrentUser)
+
+    if (currentUser) {
+        navigate('/new_character')
+    }
 
     const [user, setUser] = useState({
         username: '',

@@ -41,9 +41,9 @@ function NewCharacter() {
     useEffect(() => {
         const API_URL = `http://localhost:3001/classes`
         const fetchData = async () => {
-            const response2 = await fetch(API_URL)
-            const resData2 = await response2.json()
-            setClassData(resData2.results)
+            const response = await fetch(API_URL)
+            const resData = await response.json()
+            setClassData(resData.results)
         }
         fetchData()
     }, [])
