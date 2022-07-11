@@ -5,7 +5,6 @@ const { Character, User } = db
 
 router.post('/new', async (req, res) => {
     try {
-        console.log(req.body)
         const character = await Character.create({
             name: req.body.name,
             race: req.body.race,
@@ -29,6 +28,19 @@ router.get('/:userId', async (req, res) => {
             })
             res.json(characters)
         }
+    } catch (error) {
+        console.log(error)
+    }
+})
+
+router.put('/edit/:characterId', async (req, res) => {
+    try {
+        let characterId = Number(req.params.characterId)
+        const character = await Character.findOne({
+            where: { character_id: characterId}
+        })
+        res.json(character)
+        console.log(character)
     } catch (error) {
         console.log(error)
     }
