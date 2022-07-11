@@ -14,6 +14,7 @@ router.post('/new', async (req, res) => {
         res.json(character)
     } catch (error) {
         console.log(error)
+        res.status(500).json(error)
     }
 })
 
@@ -31,6 +32,7 @@ router.get('/:userId', async (req, res) => {
         }
     } catch (error) {
         console.log(error)
+        res.status(500).json(error)
     }
 })
 
@@ -44,6 +46,7 @@ router.get('/characters/:characterId', async (req, res) => {
         res.json(character)
     } catch (error) {
         console.log(error)
+        res.status(500).json(error)
     }
 })
 
@@ -59,6 +62,7 @@ router.put('/edit/:characterId', async (req, res) => {
         res.json(character)
     } catch (error) {
         console.log(error)
+        res.status(500).json(error)
     }
 })
 
@@ -74,6 +78,7 @@ router.delete('/:characterId', async (req, res) => {
         res.json(character)
     } catch (error) {
         console.log(error)
+        res.status(500).json(error)
     }
 })
 module.exports = router
