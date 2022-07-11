@@ -23,6 +23,13 @@ function EditCharacter() {
         fetchData()
     }, [characterId])
 
+    async function deleteCharacter() {
+        await fetch(`http://localhost:3001/characters/${characterId}`, {
+            method: 'DELETE'
+        })
+        navigate(-1)
+    }
+
     // retrieve possible character races from API
     const [raceData, setRaceData] = useState([])
 
@@ -126,7 +133,10 @@ function EditCharacter() {
                     </label>
                 </div>
                 <br></br>
+                <div>
                 <input className="btn btn-primary" type="submit" value="Confirm Changes" />
+                <button className="btn btn-danger" onClick={deleteCharacter}>Delete</button>
+                </div>
             </form>
         </div>
     )

@@ -1,17 +1,11 @@
-import { useContext, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router";
-import { Link } from "react-router-dom";
-import { CurrentUser } from "../contexts/CurrentUser";
 
 function CharactersShowPage() {
 
     const { userId } = useParams()
 
     const navigate = useNavigate()
-
-    const { currentUser } = useContext(CurrentUser)
-
-    // const { character } = useContext(Character)
 
     const [userCharacters, setUsersCharacters] = useState([])
 
@@ -31,10 +25,13 @@ function CharactersShowPage() {
                 <h1>{character.name}</h1>
                 <h3>Race: {character.race}</h3>
                 <h3>Class: {character.class}</h3>
+                <div>
                 <button onClick={() => navigate(`/characters/edit/${character.character_id}`)}>Edit</button>
+                </div>
             </div>
         )
     })
+
 
     return (
         <div>
