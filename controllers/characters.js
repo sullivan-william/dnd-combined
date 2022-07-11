@@ -1,7 +1,7 @@
 const router = require('express').Router()
 const db = require("../models")
 
-const { Character } = db
+const { Character, User } = db
 
 router.post('/new', async (req, res) => {
     try {
@@ -13,6 +13,22 @@ router.post('/new', async (req, res) => {
             user_id: req.body.user_id
         })
         res.json(character)
+    } catch (error) {
+        console.log(error)
+    }
+})
+
+router.get('/:userId', async (req, res) => {
+    try {
+        let userId = Number(req.params.userId)
+        if (isNaN(userId)) {
+            res.status(404).json({ message: 'Invalid userId' })
+        } else {
+            const characters = await Character.findAll({
+                where: { user_id: userId }
+            })
+            res.json(characters)
+        }
     } catch (error) {
         console.log(error)
     }
