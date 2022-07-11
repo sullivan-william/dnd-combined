@@ -1,5 +1,6 @@
 import { useContext, useState } from "react"
 import { useNavigate } from "react-router"
+import { Link } from "react-router-dom"
 import { CurrentUser } from "../contexts/CurrentUser"
 
 function SignUp() {
@@ -28,7 +29,6 @@ function SignUp() {
             },
             body: JSON.stringify(user)
         })
-
         navigate("/")
     }
 
@@ -63,6 +63,7 @@ function SignUp() {
                 </div>
                 <input className="btn btn-primary" type="submit" value="Sign Up" />
             </form>
+            <Link to="/">Already have an account?</Link>
         </div>
     )
 }

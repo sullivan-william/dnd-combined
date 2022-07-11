@@ -27,7 +27,7 @@ function EditCharacter() {
         await fetch(`http://localhost:3001/characters/${characterId}`, {
             method: 'DELETE'
         })
-        navigate(-1)
+        navigate(`/characters_page/${currentUser.user_id}`)
     }
 
     // retrieve possible character races from API
@@ -84,6 +84,9 @@ function EditCharacter() {
         navigate(`/characters_page/${currentUser.user_id}`)
     }
 
+    function cancel() {
+        navigate(-1)
+    }
 
     return (
         <div>
@@ -135,9 +138,12 @@ function EditCharacter() {
                 <br></br>
                 <div>
                 <input className="btn btn-primary" type="submit" value="Confirm Changes" />
+                <br></br>
                 <button className="btn btn-danger" onClick={deleteCharacter}>Delete</button>
                 </div>
             </form>
+            <br></br>
+            <button className="btn btn-secondary" onClick={cancel}>Cancel</button>
         </div>
     )
 }

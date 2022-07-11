@@ -82,7 +82,7 @@ function Login() {
                 </div>
                 <input className="btn btn-primary" type="submit" value="Login" />
             </form>
-            <Link to="/signup">New User</Link>
+            <Link className="btn btn-secondary" to="/signup">New User</Link>
         </div>
     )
 }

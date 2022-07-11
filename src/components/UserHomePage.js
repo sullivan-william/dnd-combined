@@ -18,8 +18,8 @@ function UserHomePage() {
 
     return (
         <div>
-            <button onClick={goToCharacters}>Your Characters</button>
-            <button onClick={createNew}>Create New Character</button>
+            <button className="btn btn-info" onClick={goToCharacters}>Your Characters</button>
+            <button className="btn btn-primary" onClick={createNew}>Create New Character</button>
         </div>
     )
 }
