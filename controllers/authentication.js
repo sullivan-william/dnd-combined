@@ -1,9 +1,11 @@
 const router = require('express').Router()
 const db = require("../models")
 const bcrypt = require('bcrypt')
+const session = require('express-session')
 
 const { User } = db
-  
+
+// authenticate at login
 router.post('/', async (req, res) => {
     
     let user = await User.findOne({
@@ -20,17 +22,29 @@ router.post('/', async (req, res) => {
     }
 })
 
-router.get('/profile', async (req, res) => {
+// signout route
+router.get('/signout', (req, res) => {
     try {
-        let user = await User.findOne({
-            where: {
-                user_id: req.session.user_id
-            }
-        })
-        res.json(user)
-    } catch {
-        res.json(null)
+        req.session.user_id = null
+        res.json(req.currentUser)
+    } catch (error) {
+        console.log(error)
     }
+  })
+
+// find curent user
+router.get('/profile', async (req, res) => {
+    // try {
+    //     let user = await User.findOne({
+    //         where: {
+    //             user_id: req.session.user_id
+    //         }
+    //     })
+    //     res.json(user)
+    // } catch {
+    //     res.json(null)
+    // }
+    res.json(req.currentUser)
 })
 
 module.exports = router

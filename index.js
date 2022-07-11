@@ -7,6 +7,7 @@ const app = express()
 const cookieSession = require('cookie-session')
 const axios = require('axios')
 const { Sequelize } = require('sequelize')
+const defineCurrentUser = require('./middleware/defineCurrentUser')
 
 // middleware
 app.use(cookieSession({
@@ -21,6 +22,7 @@ app.use(cors({
 app.use(express.static('public'))
 app.use(express.urlencoded({ extended: true }))
 app.use(bodyParser.json())
+app.use(defineCurrentUser)
 
 // controllers
 app.use('/users', require('./controllers/users'))
