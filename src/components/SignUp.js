@@ -29,7 +29,7 @@ function SignUp() {
             body: JSON.stringify(user)
         })
 
-        navigate("/new_character")
+        navigate("/")
     }
 
     return (

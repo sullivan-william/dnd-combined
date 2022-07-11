@@ -25,6 +25,7 @@ function Navigation() {
         let user = await response.json()
         setCurrentUser(user)
         navigate('/')
+        window.location.reload()
     }
 
     if (currentUser) {

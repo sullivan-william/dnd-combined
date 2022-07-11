@@ -1,19 +1,27 @@
-import { useContext, useState, useEffect } from "react"
-import { useNavigate } from "react-router"
+import { useContext, useEffect, useState} from "react"
+import { useNavigate, useParams } from "react-router"
+import { Character } from "../contexts/Character"
 import { CurrentUser } from "../contexts/CurrentUser"
 
-function NewCharacter() {
+function EditCharacter() {
 
     const navigate = useNavigate()
 
-    // retrieve currentUser
+    const { characterId } = useParams()
+
     const { currentUser } = useContext(CurrentUser)
 
-    const [character, setCharacter] = useState({
-        name: '',
-        race: '',
-        class: ''
-    })
+    const { character, setCharacter } = useContext(Character)
+
+    useEffect(() => {
+        const API_URL = `http://localhost:3001/characters/${characterId}`
+        const fetchData = async () => {
+            const response = await fetch(API_URL)
+            const resData = await response.json()
+            setCharacter(resData)
+        }
+        fetchData()
+    }, [characterId])
 
     // retrieve possible character races from API
     const [raceData, setRaceData] = useState([])
@@ -59,9 +67,8 @@ function NewCharacter() {
     async function handleSubmit(e) {
         e.preventDefault()
 
-
-        await fetch(`http://localhost:3001/characters/new`, {
-            method: 'POST',
+        await fetch(`http://localhost:3001/characters/edit/${characterId}`, {
+            method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
             },
@@ -70,8 +77,10 @@ function NewCharacter() {
         navigate(`/characters_page/${currentUser.user_id}`)
     }
 
+
     return (
         <div>
+            <h1>Edit Character</h1>
             <form onSubmit={handleSubmit}>
                 <div className="col-sm-6 form-group">
                     <label htmlFor="name">Name</label>
@@ -117,10 +126,10 @@ function NewCharacter() {
                     </label>
                 </div>
                 <br></br>
-                <input className="btn btn-primary" type="submit" value="Create Character" />
+                <input className="btn btn-primary" type="submit" value="Confirm Changes" />
             </form>
         </div>
     )
 }
 
-export default NewCharacter 
+export default EditCharacter
