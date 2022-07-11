@@ -35,8 +35,8 @@ function Login() {
 
         if (response.status === 200) {
             console.log(data)
-            setCurrentUser(data.user)
-            navigate('/new_character')
+            await setCurrentUser(data.user)
+            await navigate(`/home`)
         } else {
             setErrorMessage(data.message)
         }
