@@ -62,4 +62,18 @@ router.put('/edit/:characterId', async (req, res) => {
     }
 })
 
+
+// delete character
+router.delete('/:characterId', async (req, res) => {
+    try {
+        let characterId = Number(req.params.characterId)
+        const character = await Character.findOne({
+            where: { character_id: characterId}
+        })
+        await character.destroy()
+        res.json(character)
+    } catch (error) {
+        console.log(error)
+    }
+})
 module.exports = router
