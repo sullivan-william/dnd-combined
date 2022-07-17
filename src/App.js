@@ -11,6 +11,7 @@ import Navigation from './components/Navigation';
 import CharactersShowPage from './components/CharactersShowPage';
 import EditCharacter from './components/EditCharacter';
 import UserHomePage from './components/UserHomePage';
+import Spells from './components/Spells';
 
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
             <Route path='/characters_page/:userId' element={<CharactersShowPage />} />
             <Route path='/characters/edit/:characterId' element={<EditCharacter />} />
             <Route path='/home' element={<UserHomePage />} />
+            <Route path='/spells' element={<Spells />} />
           </Routes>
         </Router>
       </CharacterProvider>

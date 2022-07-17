@@ -7,7 +7,7 @@ function Spells() {
     // retrieve spells list from API
     useEffect(() => {
         // const API_URL = `https://cryptic-bayou-09878.herokuapp.com/spells/`
-        const API_URL = `http://localhost:3001/spells`
+        const API_URL = `https://cryptic-bayou-09878.herokuapp.com/spells`
         const fetchData = async () => {
             const response = await fetch(API_URL)
             const resData = await response.json()

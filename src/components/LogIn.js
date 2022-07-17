@@ -24,7 +24,7 @@ function Login() {
     async function handleSubmit(e) {
         e.preventDefault()
         // const response = await fetch(`https://cryptic-bayou-09878.herokuapp.com/authentication`, {
-        const response = await fetch(`http://localhost:3001/authentication`, {
+        const response = await fetch(`https://cryptic-bayou-09878.herokuapp.com/authentication`, {
             method: 'POST',
             credentials: 'include',
             headers: {

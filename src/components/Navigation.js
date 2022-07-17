@@ -16,13 +16,13 @@ function Navigation() {
 
     const signout = async () => {
         // let response = await fetch('https://cryptic-bayou-09878.herokuapp.com/authentication/signout', {
-        let response = await fetch(`http://localhost:3001/authentication/signout`, {
+        navigate('/')
+        window.location.reload()
+        let response = await fetch(`https://cryptic-bayou-09878.herokuapp.com/authentication/signout`, {
             credentials: 'include'
         })
         let user = await response.json()
         setCurrentUser(user)
-        navigate('/')
-        window.location.reload()
     }
 
     if (currentUser) {
