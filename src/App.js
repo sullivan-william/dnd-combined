@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import NewCharacter from './components/NewCharacter';
 import SignUp from './components/SignUp';
-import Login from './components/Login';
+import Login from './components/LogIn';
 import CurrentUserProvider from './contexts/CurrentUser';
 import CharacterProvider from './contexts/Character';
 import Navigation from './components/Navigation';
