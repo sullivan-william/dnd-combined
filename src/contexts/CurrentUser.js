@@ -9,7 +9,8 @@ function CurrentUserProvider({ children }){
     useEffect(() => {
 
         const getLoggedInUser = async () => {
-            let response = await fetch('http://localhost:3001/authentication/profile', {
+            // let response = await fetch('https://cryptic-bayou-09878.herokuapp.com/authentication/profile', {
+            let response = await fetch(`http://localhost:3001/authentication/profile`, {
                 credentials: 'include'
             })
             let user = await response.json()

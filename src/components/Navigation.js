@@ -9,17 +9,14 @@ function Navigation() {
     const { currentUser, setCurrentUser } = useContext(CurrentUser)
 
     let navbar = (
-        <li style={{ float: 'right' }}>
-            <a href="#" onClick={() => navigate('/')}>
-                Login
-            </a>
-        </li>
+        <button style={{ float: 'right' }} onClick={() => navigate('/')}>Login</button>
     )
 
     // signout function
 
     const signout = async () => {
-        let response = await fetch('http://localhost:3001/authentication/signout', {
+        // let response = await fetch('https://cryptic-bayou-09878.herokuapp.com/authentication/signout', {
+        let response = await fetch(`http://localhost:3001/authentication/signout`, {
             credentials: 'include'
         })
         let user = await response.json()
@@ -30,9 +27,9 @@ function Navigation() {
 
     if (currentUser) {
         navbar = (
-            <li style={{ float: 'right' }}>
+            <h5 style={{ float: 'right' }}>
                 {currentUser.username} - <button onClick={signout}>Signout</button>
-            </li>
+            </h5>
         )
     }
 

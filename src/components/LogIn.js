@@ -2,6 +2,7 @@ import { useContext, useState, createContext } from "react";
 import { CurrentUser } from "../contexts/CurrentUser";
 import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
+import '../App.css';
 
 function Login() {
 
@@ -22,6 +23,7 @@ function Login() {
 
     async function handleSubmit(e) {
         e.preventDefault()
+        // const response = await fetch(`https://cryptic-bayou-09878.herokuapp.com/authentication`, {
         const response = await fetch(`http://localhost:3001/authentication`, {
             method: 'POST',
             credentials: 'include',
@@ -44,7 +46,7 @@ function Login() {
     }
     
     return (
-        <div>
+        <div className="login">
             <h1>Login</h1>
             {errorMessage !== null
                 ? (

@@ -15,21 +15,23 @@ import UserHomePage from './components/UserHomePage';
 
 function App() {
   return (
-    <CurrentUserProvider>
-      <CharacterProvider>
-        <Router>
-          <Navigation />
-            <Routes>
-              <Route path='/' element={<Login />} />
-              <Route path='signup' element={<SignUp />} />
-              <Route path='/new_character' element={<NewCharacter />} />
-              <Route path='/characters_page/:userId' element={<CharactersShowPage />} />
-              <Route path='/characters/edit/:characterId' element={<EditCharacter />} />
-              <Route path='/home' element={<UserHomePage />} />
-            </Routes>
-        </Router>
-      </CharacterProvider>
-    </CurrentUserProvider>
+    <div>
+      <CurrentUserProvider>
+        <CharacterProvider>
+          <Router>
+            <Navigation />
+              <Routes>
+                <Route path='/' element={<Login />} />
+                <Route path='signup' element={<SignUp />} />
+                <Route path='/new_character' element={<NewCharacter />} />
+                <Route path='/characters_page/:userId' element={<CharactersShowPage />} />
+                <Route path='/characters/edit/:characterId' element={<EditCharacter />} />
+                <Route path='/home' element={<UserHomePage />} />
+              </Routes>
+          </Router>
+        </CharacterProvider>
+      </CurrentUserProvider>
+    </div>
   );
 }
 
