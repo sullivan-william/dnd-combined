@@ -2,6 +2,7 @@ import { useContext, useEffect, useState} from "react"
 import { useNavigate, useParams } from "react-router"
 import { Character } from "../contexts/Character"
 import { CurrentUser } from "../contexts/CurrentUser"
+import { Button, Col, Form, Row, Card, ListGroup } from "react-bootstrap"
 
 function EditCharacter() {
 
@@ -22,7 +23,7 @@ function EditCharacter() {
             setCharacter(resData)
         }
         fetchData()
-    }, [characterId])
+    }, [characterId, setCharacter])
 
     async function deleteCharacter() {
         // await fetch(`https://cryptic-bayou-09878.herokuapp.com/characters/${characterId}`, {
@@ -90,65 +91,74 @@ function EditCharacter() {
     }
 
     function cancel() {
-        navigate(-1)
+        navigate(`/characters_page/${currentUser.user_id}`)
     }
 
     return (
         <div>
             <h1>Edit Character</h1>
-            <form onSubmit={handleSubmit}>
-                <div className="col-sm-6 form-group">
-                    <label htmlFor="name">Name</label>
-                    <input
-                        required
-                        value={character.name}
-                        onChange={e => setCharacter({ ...character, name: e.target.value, user_id: currentUser.user_id })}
-                        className="form-control"
-                        id="name"
-                        name="name"
-                    />
-                </div>
-                <br></br>
-                <div>
-                    <label htmlFor="race">
-                        Choose Your Race:
-                        <br></br>
-                        <select
+            <Form onSubmit={handleSubmit}>
+                <Row className="align-items-center">
+                    <Col xs="auto">
+                        <Form.Label htmlFor="name">Name</Form.Label>
+                        <Form.Control
                             required
-                            value={character.race}
-                            onChange={e => setCharacter({ ...character, race: e.target.value })}
-                            id="race"
-                            name="race"
-                        >
-                            {races}
-                        </select>
-                    </label>
-                </div>
-                <br></br>
-                <div>
-                    <label htmlFor="class">
-                        Choose Your Class:
+                            value={character.name}
+                            onChange={e => setCharacter({ ...character, name: e.target.value, user_id: currentUser.user_id })}
+                            className="mb-2"
+                            id="name"
+                            name="name"
+                        />  
+                    </Col>
+                    <Col xs="auto">
+                        <Form.Label htmlFor="race">
+                            Choose Your Race:
+                            <br></br>
+                            <Form.Select
+                                required
+                                onChange={e => setCharacter({ ...character, race: e.target.value })}
+                                id="race"
+                                name="race"
+                            >
+                                <option value="" selected disabled hidden>Select an Option</option>
+                                {races}
+                            </Form.Select>
+                        </Form.Label>
                         <br></br>
-                        <select
-                            required
-                            value={character.class}
-                            onChange={e => setCharacter({ ...character, class: e.target.value })}
-                            id="class"
-                            name="class"
-                        >
-                            {classes}
-                        </select>
-                    </label>
-                </div>
+                    </Col>
+                    <Col xs="auto">
+                        <Form.Label htmlFor="class">
+                            Choose Your Class:
+                            <br></br>
+                            <Form.Select
+                                required
+                                onChange={e => setCharacter({ ...character, class: e.target.value })}
+                                id="class"
+                                name="class"
+                            >
+                                <option value="" selected disabled hidden>Select an Option</option>
+                                {classes}
+                            </Form.Select>
+                        </Form.Label>
+                    </Col>
+                </Row>
                 <br></br>
-                <div>
-                <input className="btn btn-primary" type="submit" value="Confirm Changes" />
-                <br></br>
-                <button className="btn btn-danger" onClick={deleteCharacter}>Delete</button>
-                </div>
-            </form>
+                <Card style={{margin: "3em", width: "20rem"}}>
+                    <Card.Img variant="top" src="../place-image.png" alt="DnD characters" style={{height: "18rem"}} />
+                    <Card.Body>
+                        <Card.Title>{character.name}</Card.Title>
+                        <ListGroup className="list-group-flush">
+                            <ListGroup.Item>Race: {character.race}</ListGroup.Item>
+                            {/* <ListGroup.Item>{raceDescription}</ListGroup.Item> */}
+                            <ListGroup.Item>Class: {character.class}</ListGroup.Item>
+                        </ListGroup>
+                    </Card.Body>
+                </Card>
+                <Button style={{background: "#85FFF9", color: "#0F0A0A", border: "2px solid #5CFFF7"}} type="submit">Confirm Changes</Button>
+                <button className="btn btn-secondary" onClick={cancel}>Cancel</button>
+            </Form>
             <br></br>
-            <button className="btn btn-secondary" onClick={cancel}>Cancel</button>
+            <Button className="btn btn-danger" onClick={deleteCharacter}>Delete</Button>
         </div>
     )
 }

@@ -1,4 +1,5 @@
 import { useContext, useState } from "react"
+import { Button, Col, Form, Row } from "react-bootstrap"
 import { useNavigate } from "react-router"
 import { Link } from "react-router-dom"
 import { CurrentUser } from "../contexts/CurrentUser"
@@ -36,35 +37,37 @@ function SignUp() {
     return (
         <div>
             <h1>Sign Up</h1>
-            <form onSubmit={handleSubmit}>
-                <div className="row">
-                    <div className="col-sm-6 form-group">
-                        <label htmlFor="username">Username</label>
-                        <input
+            <Form onSubmit={handleSubmit}>
+                <Row className="align-items-center">
+                    <Col xs="auto">
+                        <Form.Label htmlFor="username">Username</Form.Label>
+                        <Form.Control
                             required
                             value={user.username}
                             onChange={e => setUser({ ...user, username: e.target.value })}
-                            className="form-control"
+                            className="mb-2"
                             id="username"
                             name="username"
                         />
-                    </div>
-                    <div className="col-sm-6 form-group">
-        				<label htmlFor="password">Password</label>
-        				<input
+                    </Col>
+                    <Col xs="auto">
+        				<Form.Label htmlFor="password">Password</Form.Label>
+        				<Form.Control
             				type="password"
             				required
             				value={user.password}
             				onChange={e => setUser({ ...user, password: e.target.value })}
-            				className="form-control"
+            				className="mb-2"
             				id="password"
             				name="password"
         				/>
-    				</div>
-                </div>
-                <input className="btn btn-primary" type="submit" value="Sign Up" />
-            </form>
-            <Link to="/">Already have an account?</Link>
+                    </Col>
+                </Row>
+                <Button style={{background: "#F7567C", border: "2px solid #F7567C"}} type="submit" className="mb-2">
+                    Sign Up
+                </Button>
+            </Form>
+            <Link style={{color: "#8F8F8F"}} to="/">Already have an account?</Link>
         </div>
     )
 }

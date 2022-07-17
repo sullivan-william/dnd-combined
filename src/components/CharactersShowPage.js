@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Button, Card, CardGroup, ListGroup } from "react-bootstrap";
 import { useNavigate, useParams } from "react-router";
 
 function CharactersShowPage() {
@@ -22,14 +23,17 @@ function CharactersShowPage() {
     
     let characters = userCharacters.map((character, i) => {
         return (
-            <div key={i}>
-                <h1>{character.name}</h1>
-                <h3>Race: {character.race}</h3>
-                <h3>Class: {character.class}</h3>
-                <div>
-                <button className="btn btn-warning" onClick={() => navigate(`/characters/edit/${character.character_id}`)}>Edit</button>
-                </div>
-            </div>
+                <Card key={i} style={{margin: "3em"}}>
+                    <Card.Img variant="top" src="../place-image.png" alt="DnD characters" style={{height: "18rem"}} />
+                    <Card.Body>
+                        <Card.Title>{character.name}</Card.Title>
+                        <ListGroup className="list-group-flush">
+                            <ListGroup.Item>Race: {character.race}</ListGroup.Item>
+                            <ListGroup.Item>Class: {character.class}</ListGroup.Item>
+                        </ListGroup>
+                        <Button style={{background: "#662C91", color: "#F5F5F5", border: "2px solid #57267D"}} onClick={() => navigate(`/characters/edit/${character.character_id}`)}>Edit</Button>
+                    </Card.Body>
+                </Card>
         )
     })
 
@@ -41,17 +45,35 @@ function CharactersShowPage() {
         navigate('/home')
     }
 
-    return (
-        <div>
-            <h1>Your Characters</h1>
-            {characters}
-            <br></br>
+    if (characters.length < 1) {
+        return (
             <div>
-                <button className="btn btn-primary" onClick={createNew}>Create New Character</button>
-                <button className="btn btn-secondary" onClick={goHome}>Exit</button>
+                <h1>No characters yet? Time for a fresh start!</h1>
+                <br></br>
+                <div className="d-flex justify-content-start">
+                    <Button style={{background: "#85FFF9", color: "#0F0A0A", border: "2px solid #5CFFF7"}} onClick={createNew}>Create New Character</Button>
+                    <button className="btn btn-secondary" onClick={goHome}>Exit</button>
+                </div>
             </div>
-        </div>
-    )
+        )
+    } else {
+        return (
+            <div>
+                <h1>Your Characters</h1>
+                <div className="d-flex justify-content-start">
+                    <CardGroup>
+                        {characters}
+                    </CardGroup>
+                </div>
+                <br></br>
+                <div className="d-flex justify-content-end">
+                    <Button style={{background: "#85FFF9", color: "#0F0A0A", border: "2px solid #5CFFF7"}} onClick={createNew}>Create New Character</Button>
+                    <button className="btn btn-secondary" onClick={goHome}>Exit</button>
+                </div>
+            </div>
+        )
+    }
+
 }
 
 export default CharactersShowPage

@@ -2,7 +2,7 @@ import { useContext, useState, createContext } from "react";
 import { CurrentUser } from "../contexts/CurrentUser";
 import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
-import '../App.css';
+import { Button, Col, Form, Row } from "react-bootstrap";
 
 function Login() {
 
@@ -44,9 +44,11 @@ function Login() {
         }
 
     }
-    
+
     return (
-        <div className="login">
+        <div>
+            <h1> Custom Character Sheets </h1>
+            <p>Welcome! This website is designed for players of the game Dungeons &amp; Dragons. For those that are complete beginners and experienced adventurers alike. The purpose of this website is so that you and your friends can build your character sheets and keep track of your in game progress together with an easy to follow format. It is currently a work in progress but we hope to be fully functional within the next couple of weeks. As for now feel free to create an account and plan for your future characters by giving them names and choosing their starting race and class.</p>
             <h1>Login</h1>
             {errorMessage !== null
                 ? (
@@ -56,34 +58,36 @@ function Login() {
                 )
                 : null
             }
-            <form onSubmit={handleSubmit}>
-                <div className="row">
-                    <div className="col-sm-6 form-group">
-                        <label htmlFor="username">Username</label>
-                        <input
+            <Form onSubmit={handleSubmit}>
+                <Row className="align-items-center">
+                    <Col xs="auto">
+                        <Form.Label htmlFor="username">Username</Form.Label>
+                        <Form.Control
                             required
                             value={credentials.username}
                             onChange={e => setCredentials({ ...credentials, username: e.target.value })}
-                            className="form-control"
+                            className="mb-2"
                             id="username"
                             name="username"
                         />
-                    </div>
-                    <div className="col-sm-6 form-group">
-                        <label htmlFor="password">Password</label>
-                        <input
+                    </Col>
+                    <Col xs="auto">
+                        <Form.Label htmlFor="password">Password</Form.Label>
+                        <Form.Control
                             type="password"
                             required
                             value={credentials.password}
                             onChange={e => setCredentials({ ...credentials, password: e.target.value })}
-                            className="form-control"
+                            className="mb-2"
                             id="password"
                             name="password"
                         />
-                    </div>
-                </div>
-                <input className="btn btn-primary" type="submit" value="Login" />
-            </form>
+                    </Col>
+                </Row>
+                <Button style={{background: "#F7567C", border: "2px solid #F7567C"}} type="submit" className="mb-2">
+                    Login
+                </Button>
+            </Form>
             <Link className="btn btn-secondary" to="/signup">New User</Link>
         </div>
     )

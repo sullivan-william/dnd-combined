@@ -9,7 +9,7 @@ function Navigation() {
     const { currentUser, setCurrentUser } = useContext(CurrentUser)
 
     let navbar = (
-        <button style={{ float: 'right' }} onClick={() => navigate('/')}>Login</button>
+        <h2 style={{ float: 'right' }}>Welcome to the world of D&amp;D!</h2>
     )
 
     // signout function
@@ -34,7 +34,7 @@ function Navigation() {
     }
 
     return (
-        <nav>
+        <nav className="nav">
             <ul>
                 {navbar}
             </ul>
