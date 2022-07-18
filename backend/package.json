@@ -12,5 +12,11 @@
     "pg-hstore": "^2.3.4",
     "sequelize": "^6.21.2",
     "sequelize-cli": "^6.4.1"
+  },
+  "engines": {
+    "node": "18.3.0"
+  },
+  "scripts": {
+    "start": "node index.js"
   }
 }

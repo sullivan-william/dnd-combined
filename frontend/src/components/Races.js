@@ -9,7 +9,7 @@
 
 //     // retrieve possible character races from API
 //     useEffect(() => {
-//         const API_URL = `https://cryptic-bayou-09878.herokuapp.com/races`
+//         const API_URL = `http://localhost:3001/races`
 //         const fetchData = async () => {
 //             const response = await fetch(API_URL)
 //             const resData = await response.json()

@@ -23,8 +23,8 @@ function SignUp() {
     async function handleSubmit(e) {
         e.preventDefault()
 
-        // await fetch(`https://cryptic-bayou-09878.herokuapp.com/users`, {
-        await fetch(`https://cryptic-bayou-09878.herokuapp.com/users`, {
+        // await fetch(`http://localhost:3001/users`, {
+        await fetch(`http://localhost:3001/users`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

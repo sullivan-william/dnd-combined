@@ -20,8 +20,8 @@ function NewCharacter() {
     const [raceData, setRaceData] = useState([])
 
     useEffect(() => {
-        // const API_URL = `https://cryptic-bayou-09878.herokuapp.com/races`
-        const API_URL = `https://cryptic-bayou-09878.herokuapp.com/races`
+        // const API_URL = `http://localhost:3001/races`
+        const API_URL = `http://localhost:3001/races`
         const fetchData = async () => {
             const response = await fetch(API_URL)
             const resData = await response.json()
@@ -41,8 +41,8 @@ function NewCharacter() {
     const [classData, setClassData] = useState([])
 
     useEffect(() => {
-        // const API_URL = `https://cryptic-bayou-09878.herokuapp.com/classes`
-        const API_URL = `https://cryptic-bayou-09878.herokuapp.com/classes`
+        // const API_URL = `http://localhost:3001/classes`
+        const API_URL = `http://localhost:3001/classes`
         const fetchData = async () => {
             const response = await fetch(API_URL)
             const resData = await response.json()
@@ -63,8 +63,8 @@ function NewCharacter() {
         e.preventDefault()
 
 
-        // await fetch(`https://cryptic-bayou-09878.herokuapp.com/characters/new`, {
-        await fetch(`https://cryptic-bayou-09878.herokuapp.com/characters/new`, {
+        // await fetch(`http://localhost:3001/characters/new`, {
+        await fetch(`http://localhost:3001/characters/new`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

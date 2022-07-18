@@ -10,7 +10,7 @@
 //     const [classData, setClassData] = useState([])
 
 //     useEffect(() => {
-//         const API_URL = `https://cryptic-bayou-09878.herokuapp.com/classes`
+//         const API_URL = `http://localhost:3001/classes`
 //         const fetchData = async () => {
 //             const response2 = await fetch(API_URL)
 //             const resData2 = await response2.json()

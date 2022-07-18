@@ -15,8 +15,8 @@ function EditCharacter() {
     const { character, setCharacter } = useContext(Character)
 
     useEffect(() => {
-        // const API_URL = `https://cryptic-bayou-09878.herokuapp.com/characters/${characterId}`
-        const API_URL = `https://cryptic-bayou-09878.herokuapp.com/characters${characterId}`
+        // const API_URL = `http://localhost:3001/characters/${characterId}`
+        const API_URL = `http://localhost:3001/characters${characterId}`
         const fetchData = async () => {
             const response = await fetch(API_URL)
             const resData = await response.json()
@@ -26,8 +26,8 @@ function EditCharacter() {
     }, [characterId, setCharacter])
 
     async function deleteCharacter() {
-        // await fetch(`https://cryptic-bayou-09878.herokuapp.com/characters/${characterId}`, {
-        await fetch(`https://cryptic-bayou-09878.herokuapp.com/characters/${characterId}`, {
+        // await fetch(`http://localhost:3001/characters/${characterId}`, {
+        await fetch(`http://localhost:3001/characters/${characterId}`, {
             method: 'DELETE'
         })
         navigate(`/characters_page/${currentUser.user_id}`)
@@ -37,8 +37,8 @@ function EditCharacter() {
     const [raceData, setRaceData] = useState([])
 
     useEffect(() => {
-        // const API_URL = `https://cryptic-bayou-09878.herokuapp.com/races`
-        const API_URL = `https://cryptic-bayou-09878.herokuapp.com/races`
+        // const API_URL = `http://localhost:3001/races`
+        const API_URL = `http://localhost:3001/races`
         const fetchData = async () => {
             const response = await fetch(API_URL)
             const resData = await response.json()
@@ -58,8 +58,8 @@ function EditCharacter() {
     const [classData, setClassData] = useState([])
 
     useEffect(() => {
-        // const API_URL = `https://cryptic-bayou-09878.herokuapp.com/classes`
-        const API_URL = `https://cryptic-bayou-09878.herokuapp.com/classes`
+        // const API_URL = `http://localhost:3001/classes`
+        const API_URL = `http://localhost:3001/classes`
         const fetchData = async () => {
             const response = await fetch(API_URL)
             const resData = await response.json()
@@ -79,8 +79,8 @@ function EditCharacter() {
     async function handleSubmit(e) {
         e.preventDefault()
 
-        // await fetch(`https://cryptic-bayou-09878.herokuapp.com/characters/edit/${characterId}`, {
-        await fetch(`https://cryptic-bayou-09878.herokuapp.com/characters/edit/${characterId}`, {
+        // await fetch(`http://localhost:3001/characters/edit/${characterId}`, {
+        await fetch(`http://localhost:3001/characters/edit/${characterId}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'

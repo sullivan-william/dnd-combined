@@ -8,6 +8,7 @@ const cookieSession = require('cookie-session')
 const axios = require('axios')
 const { Sequelize } = require('sequelize')
 const defineCurrentUser = require('./middleware/defineCurrentUser')
+const path = require('path')
 
 // middleware
 app.use(cookieSession({
@@ -23,6 +24,9 @@ app.use(express.static('public'))
 app.use(express.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 app.use(defineCurrentUser)
+
+// Serve static files from the React frontend app
+app.use(express.static(path.join(__dirname, '../frontend/build')))
 
 // controllers
 app.use('/users', require('./controllers/users'))
@@ -69,6 +73,10 @@ app.get('/races', async(req, res) => {
         res.status(500).json(error)
     }
 })
+
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname + '/../frontend/build/index.html'))
+  })
 
 // listener
 app.listen(process.env.PORT || 4000, () => console.log(`Listening on ${process.env.PORT || 4000}`))

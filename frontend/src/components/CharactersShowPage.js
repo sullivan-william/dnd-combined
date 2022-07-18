@@ -11,8 +11,8 @@ function CharactersShowPage() {
     const [userCharacters, setUsersCharacters] = useState([])
 
     useEffect(() => {
-        // const API_URL = `https://cryptic-bayou-09878.herokuapp.com/characters/${userId}`
-        const API_URL = `https://cryptic-bayou-09878.herokuapp.com/characters/${userId}`
+        // const API_URL = `http://localhost:3001/characters/${userId}`
+        const API_URL = `http://localhost:3001/characters/${userId}`
         const fetchData = async () => {
             const response = await fetch(API_URL)
             const resData = await response.json()
