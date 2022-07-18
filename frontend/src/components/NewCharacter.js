@@ -20,7 +20,6 @@ function NewCharacter() {
     const [raceData, setRaceData] = useState([])
 
     useEffect(() => {
-        // const API_URL = `https://customcharactersheetbuilder.herokuapp.com/races`
         const API_URL = `https://customcharactersheetbuilder.herokuapp.com/races`
         const fetchData = async () => {
             const response = await fetch(API_URL)
@@ -41,7 +40,6 @@ function NewCharacter() {
     const [classData, setClassData] = useState([])
 
     useEffect(() => {
-        // const API_URL = `https://customcharactersheetbuilder.herokuapp.com/classes`
         const API_URL = `https://customcharactersheetbuilder.herokuapp.com/classes`
         const fetchData = async () => {
             const response = await fetch(API_URL)
@@ -62,8 +60,6 @@ function NewCharacter() {
     async function handleSubmit(e) {
         e.preventDefault()
 
-
-        // await fetch(`https://customcharactersheetbuilder.herokuapp.com/characters/new`, {
         await fetch(`https://customcharactersheetbuilder.herokuapp.com/characters/new`, {
             method: 'POST',
             headers: {
@@ -77,12 +73,6 @@ function NewCharacter() {
     function goBack() {
         navigate(-1)
     }
-
-    // set description for races
-    // let raceDescription;
-    // if (character.race === "Dragonborn") {
-    //     raceDescription = "The dragonborn are a race of humanoids whose form resembles that of a dragon, having a scaled hide and a dragonlike head. They are proud and brave, with strong ties to clan, tradition, and family."
-    // }
 
     return (
         <div>
@@ -138,7 +128,6 @@ function NewCharacter() {
                         <Card.Title>{character.name}</Card.Title>
                         <ListGroup className="list-group-flush">
                             <ListGroup.Item>Race: {character.race}</ListGroup.Item>
-                            {/* <ListGroup.Item>{raceDescription}</ListGroup.Item> */}
                             <ListGroup.Item>Class: {character.class}</ListGroup.Item>
                         </ListGroup>
                     </Card.Body>

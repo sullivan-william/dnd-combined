@@ -15,7 +15,6 @@ function EditCharacter() {
     const { character, setCharacter } = useContext(Character)
 
     useEffect(() => {
-        // const API_URL = `https://customcharactersheetbuilder.herokuapp.com/characters/${characterId}`
         const API_URL = `https://customcharactersheetbuilder.herokuapp.com/characters${characterId}`
         const fetchData = async () => {
             const response = await fetch(API_URL)
@@ -26,7 +25,6 @@ function EditCharacter() {
     }, [characterId, setCharacter])
 
     async function deleteCharacter() {
-        // await fetch(`https://customcharactersheetbuilder.herokuapp.com/characters/${characterId}`, {
         await fetch(`https://customcharactersheetbuilder.herokuapp.com/characters/${characterId}`, {
             method: 'DELETE'
         })
@@ -37,7 +35,6 @@ function EditCharacter() {
     const [raceData, setRaceData] = useState([])
 
     useEffect(() => {
-        // const API_URL = `https://customcharactersheetbuilder.herokuapp.com/races`
         const API_URL = `https://customcharactersheetbuilder.herokuapp.com/races`
         const fetchData = async () => {
             const response = await fetch(API_URL)
@@ -58,7 +55,6 @@ function EditCharacter() {
     const [classData, setClassData] = useState([])
 
     useEffect(() => {
-        // const API_URL = `https://customcharactersheetbuilder.herokuapp.com/classes`
         const API_URL = `https://customcharactersheetbuilder.herokuapp.com/classes`
         const fetchData = async () => {
             const response = await fetch(API_URL)
@@ -79,7 +75,6 @@ function EditCharacter() {
     async function handleSubmit(e) {
         e.preventDefault()
 
-        // await fetch(`https://customcharactersheetbuilder.herokuapp.com/characters/edit/${characterId}`, {
         await fetch(`https://customcharactersheetbuilder.herokuapp.com/characters/edit/${characterId}`, {
             method: 'PUT',
             headers: {
@@ -149,7 +144,6 @@ function EditCharacter() {
                         <Card.Title>{character.name}</Card.Title>
                         <ListGroup className="list-group-flush">
                             <ListGroup.Item>Race: {character.race}</ListGroup.Item>
-                            {/* <ListGroup.Item>{raceDescription}</ListGroup.Item> */}
                             <ListGroup.Item>Class: {character.class}</ListGroup.Item>
                         </ListGroup>
                     </Card.Body>

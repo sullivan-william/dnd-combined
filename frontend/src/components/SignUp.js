@@ -23,7 +23,6 @@ function SignUp() {
     async function handleSubmit(e) {
         e.preventDefault()
 
-        // await fetch(`https://customcharactersheetbuilder.herokuapp.com/users`, {
         await fetch(`https://customcharactersheetbuilder.herokuapp.com/users`, {
             method: 'POST',
             headers: {

@@ -9,7 +9,6 @@ function CurrentUserProvider({ children }){
     useEffect(() => {
 
         const getLoggedInUser = async () => {
-            // let response = await fetch('https://customcharactersheetbuilder.herokuapp.com/authentication/profile', {
             let response = await fetch(`https://customcharactersheetbuilder.herokuapp.com/authentication/profile`, {
                 credentials: 'include'
             })

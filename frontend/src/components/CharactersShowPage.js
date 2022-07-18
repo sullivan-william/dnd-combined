@@ -11,7 +11,6 @@ function CharactersShowPage() {
     const [userCharacters, setUsersCharacters] = useState([])
 
     useEffect(() => {
-        // const API_URL = `https://customcharactersheetbuilder.herokuapp.com/characters/${userId}`
         const API_URL = `https://customcharactersheetbuilder.herokuapp.com/characters/${userId}`
         const fetchData = async () => {
             const response = await fetch(API_URL)
