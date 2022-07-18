@@ -9,7 +9,7 @@
 
 //     // retrieve possible character races from API
 //     useEffect(() => {
-//         const API_URL = `https://customcharactersheetbuilder.herokuapp.com//races`
+//         const API_URL = `https://customcharactersheetbuilder.herokuapp.com/races`
 //         const fetchData = async () => {
 //             const response = await fetch(API_URL)
 //             const resData = await response.json()
