@@ -15,10 +15,10 @@ function Navigation() {
     // signout function
 
     const signout = async () => {
-        // let response = await fetch('http://localhost:3001/authentication/signout', {
+        // let response = await fetch('https://customcharactersheetbuilder.herokuapp.com//authentication/signout', {
         navigate('/')
         window.location.reload()
-        let response = await fetch(`http://localhost:3001/authentication/signout`, {
+        let response = await fetch(`https://customcharactersheetbuilder.herokuapp.com//authentication/signout`, {
             credentials: 'include'
         })
         let user = await response.json()
