@@ -1,0 +1,13 @@
+body {
+    background-color: #0F0A0A;
+    color: #E1BB80;
+}
+
+p {
+    color: #EBEBEB;
+}
+
+.nav {
+    color: #E1BB80;
+    float: right;
+}
