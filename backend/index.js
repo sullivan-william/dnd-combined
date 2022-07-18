@@ -9,6 +9,8 @@ const axios = require('axios')
 const { Sequelize } = require('sequelize')
 const defineCurrentUser = require('./middleware/defineCurrentUser')
 const path = require('path')
+const env = process.env.NODE_ENV || 'development';
+const config = require(__dirname + '/../config/config.json')[env];
 
 // middleware
 app.use(cookieSession({
@@ -24,6 +26,25 @@ app.use(express.static('public'))
 app.use(express.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 app.use(defineCurrentUser)
+
+const { Client } = require('pg');
+
+const client = new Client({
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false
+  }
+});
+
+client.connect();
+
+client.query('SELECT table_schema,table_name FROM information_schema.tables;', (err, res) => {
+  if (err) throw err;
+  for (let row of res.rows) {
+    console.log(JSON.stringify(row));
+  }
+  client.end();
+});
 
 // Serve static files from the React frontend app
 app.use(express.static(path.join(__dirname, '../frontend/build')))

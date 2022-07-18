@@ -1,5 +1,6 @@
 {
   "development": {
+    "use_env_variable": "DATABASE_URL",
     "username": "postgres",
     "password": "admin",
     "database": "dnd_character_sheet",
@@ -7,16 +8,18 @@
     "dialect": "postgres"
   },
   "test": {
+    "use_env_variable": "DATABASE_URL",
     "username": "postgres",
     "password": "admin",
-    "database": "dnd_character_sheet_test",
+    "database": "dnd_character_sheet",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
   "production": {
+    "use_env_variable": "DATABASE_URL",
     "username": "postgres",
     "password": "admin",
-    "database": "dnd_character_sheet_production",
+    "database": "dnd_character_sheet",
     "host": "127.0.0.1",
     "dialect": "postgres"
   }
