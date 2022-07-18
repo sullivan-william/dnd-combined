@@ -5,7 +5,7 @@
   "engines": {
     "node": "18.3.0"
   },
-  "proxy": "http://localhost:3001",
+  "proxy": "https://customcharactersheetbuilder.herokuapp.com/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
