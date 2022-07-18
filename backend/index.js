@@ -10,7 +10,7 @@ const { Sequelize } = require('sequelize')
 const defineCurrentUser = require('./middleware/defineCurrentUser')
 const path = require('path')
 const env = process.env.NODE_ENV || 'development';
-const config = require(__dirname + '/../config/config.json')[env];
+// const config = require(__dirname + '/../config/config.json')[env];
 
 // middleware
 app.use(cookieSession({
